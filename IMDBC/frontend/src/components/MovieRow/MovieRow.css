@@ -1,0 +1,30 @@
+.movie-row {
+    padding: 50px 60px;
+}
+
+.movie-row h2 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.movie-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+}
+
+.movie-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.movie-container::-webkit-scrollbar-thumb {
+    background: #f5c518;
+    border-radius: 20px;
+}
+
+.movie-container::-webkit-scrollbar-track {
+    background: #222;
+}
