@@ -8,9 +8,11 @@ const READ_ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGFlMjY4YTU5MzBhNjc3
 
 // ── CORS Proxy ──
 // If your network blocks api.themoviedb.org, set VITE_CORS_PROXY to a proxy URL.
-// Examples:
-//   https://corsproxy.io/?
-//   https://api.allorigins.win/raw?url=
+// Two formats are supported:
+//   1. "{url}" placeholder — the full TMDB URL is substituted as-is (raw),
+//      e.g. https://proxy.cors.sh/{url}
+//   2. Legacy — the proxy prefix is prepended to the URL-encoded target,
+//      e.g. https://corsproxy.io/?  or  https://api.allorigins.win/raw?url=
 // Create a .env file in frontend/ with: VITE_CORS_PROXY=https://corsproxy.io/?
 const CORS_PROXY = import.meta.env.VITE_CORS_PROXY || "";
 
@@ -38,8 +40,13 @@ tmdb.interceptors.request.use((config) => {
       const qstr = qs.toString();
       if (qstr) fullUrl += `?${qstr}`;
     }
-    // Rewrite request through proxy
-    config.url = `${CORS_PROXY}${encodeURIComponent(fullUrl)}`;
+    // Rewrite request through proxy.
+    // If the proxy URL contains a {url} placeholder, substitute the full TMDB
+    // URL raw (works with path-style proxies like proxy.cors.sh). Otherwise
+    // prepend the proxy to the URL-encoded target (legacy style).
+    config.url = CORS_PROXY.includes("{url}")
+      ? CORS_PROXY.replace("{url}", fullUrl)
+      : `${CORS_PROXY}${encodeURIComponent(fullUrl)}`;
     config.baseURL = "";
     config.params = {};
   }
