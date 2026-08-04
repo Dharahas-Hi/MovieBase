@@ -12,6 +12,9 @@ import "./Upcoming.css";
 const FALLBACK_IMG =
   "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80";
 
+// Base-aware fallback poster so it works under the /MovieBase/ subpath on GitHub Pages.
+const NO_POSTER = `${import.meta.env.BASE_URL}images/no-poster.svg`;
+
 // How many pages (20 movies each) to fetch on first load.
 const INITIAL_PAGES = 3;
 
@@ -323,7 +326,7 @@ function TrailerRow({ title, badge, movies, onOpen }) {
       <div className="recent-trailers-scroll">
         {movies.map((movie) => {
           const mid = movie.movie_id ?? movie.id;
-          const poster = movie.poster_url || "/images/no-poster.svg";
+          const poster = movie.poster_url || NO_POSTER;
 
           return (
             <div
@@ -338,7 +341,7 @@ function TrailerRow({ title, badge, movies, onOpen }) {
                   alt={movie.title}
                   loading="lazy"
                   onError={(e) => {
-                    e.target.src = "/images/no-poster.svg";
+                    e.target.src = NO_POSTER;
                   }}
                 />
                 <div className="recent-trailer-overlay">
@@ -550,7 +553,7 @@ function Upcoming() {
           <div className="upcoming-grid">
             {gridMovies.map((movie) => {
               const mid = movie.movie_id ?? movie.id;
-              const poster = movie.poster_url || "/images/no-poster.svg";
+              const poster = movie.poster_url || NO_POSTER;
               const releaseDate = parseDate(movie.release_date);
               const isUpcoming =
                 releaseDate && releaseDate.getTime() > Date.now();
@@ -568,7 +571,7 @@ function Upcoming() {
                       alt={movie.title}
                       loading="lazy"
                       onError={(e) => {
-                        e.target.src = "/images/no-poster.svg";
+                        e.target.src = NO_POSTER;
                       }}
                     />
                     <div className="upcoming-card-overlay">

@@ -2,8 +2,11 @@ import "./MovieCard.css";
 import { Link } from "react-router-dom";
 import { getYear, isToday } from "../../utils/date";
 
+// Base-aware fallback poster so it works under the /MovieBase/ subpath on GitHub Pages.
+const NO_POSTER = `${import.meta.env.BASE_URL}images/no-poster.svg`;
+
 function MovieCard({ movie }) {
-  const poster = movie.poster_url || movie.poster || "";
+  const poster = movie.poster_url || movie.poster || NO_POSTER;
   const rating = movie.imdb_rating ?? movie.rating ?? null;
   const year = getYear(movie.release_date) || movie.year || "";
   const releasingToday = isToday(movie.release_date);
@@ -20,10 +23,10 @@ function MovieCard({ movie }) {
         <div className="movie-poster-wrap">
           <img
             loading="lazy"
-            src={poster || "/images/no-poster.svg"}
+            src={poster}
             alt={movie.title}
             onError={(e) => {
-              e.target.src = "/images/no-poster.svg";
+              e.target.src = NO_POSTER;
             }}
           />
           {releasingToday && (
