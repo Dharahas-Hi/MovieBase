@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { LuClapperboard } from "react-icons/lu";
 import { fetchGenres } from "../../services/api";
 import { useTheme } from "../../context/ThemeContext";
 import "./Navbar.css";
@@ -61,7 +62,10 @@ function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-left">
-        <Link to="/" className="logo">IMDBC</Link>
+        <Link to="/" className="logo">
+          <span className="logo-mark"><LuClapperboard /></span>
+          <span className="logo-text">MOVIEBASE</span>
+        </Link>
         <ul className="nav-links desktop-nav">
           <li><Link to="/" className={isActive("/") && !isActive("/movies") && !isActive("/tv-shows") && !isActive("/upcoming") ? "active" : ""}>Home</Link></li>
           <li><Link to="/upcoming" className={isActive("/upcoming") ? "active" : ""}>Upcoming</Link></li>

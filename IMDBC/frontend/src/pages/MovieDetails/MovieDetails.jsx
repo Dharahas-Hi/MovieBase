@@ -286,7 +286,7 @@ function MovieDetails() {
               {/* Rating Circle */}
               <div className="hero-rating-row">
                 {rating !== null && (
-                  <div className="rating-circle-wrap" title={`IMDb ${rating.toFixed(1)}`}>
+                  <div className="rating-circle-wrap" title={`MOVIEBASE ${rating.toFixed(1)}`}>
                     <svg viewBox="0 0 36 36" className="rating-circle">
                       <path
                         className="rating-circle-bg"
@@ -303,7 +303,7 @@ function MovieDetails() {
                       <span className="rating-circle-value">{ratingPercent}</span>
                       <span className="rating-circle-pct">%</span>
                     </div>
-                    <div className="rating-label">IMDbc</div>
+                    <div className="rating-label">MOVIEBASE</div>
                   </div>
                 )}
 
@@ -399,7 +399,7 @@ function MovieDetails() {
               </div>
             )}
             <div className="info-item">
-              <h4>IMDb Rating</h4>
+              <h4>MOVIEBASE Rating</h4>
               <span className="info-rating-value">{rating ? `${rating.toFixed(1)} / 10` : "N/A"}</span>
             </div>
             {movie.votes > 0 && (

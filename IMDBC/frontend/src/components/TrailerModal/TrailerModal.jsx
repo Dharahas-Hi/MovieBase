@@ -174,7 +174,7 @@ function TrailerModal({ movie, onClose }) {
                     <span className="trailer-rating-num">{rating.toFixed(1)}/10</span>
                   </div>
                 )}
-                <div className="trailer-rating-label">IMDb Rating</div>
+                <div className="trailer-rating-label">MOVIEBASE Rating</div>
               </div>
 
               {/* Director */}

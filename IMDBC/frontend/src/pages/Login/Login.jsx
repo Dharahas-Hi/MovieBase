@@ -44,7 +44,7 @@ function Login() {
             <div className="login-card">
 
                 <div className="login-logo">
-                    IMDBC
+                    MOVIEBASE
                 </div>
 
                 <h2>Sign In</h2>

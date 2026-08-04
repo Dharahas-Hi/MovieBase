@@ -7,7 +7,7 @@ function Footer() {
             <div className="footer-content">
                 <div className="footer-top">
                     <div className="footer-brand">
-                        <div className="footer-logo">IMDBC</div>
+                        <div className="footer-logo">MOVIEBASE</div>
                         <p className="footer-text">
                             Your ultimate movie database — discover, explore, and connect with cinema.
                         </p>
@@ -42,7 +42,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p className="footer-copy">&copy; {new Date().getFullYear()} IMDBC. All rights reserved.</p>
+                    <p className="footer-copy">&copy; {new Date().getFullYear()} MOVIEBASE. All rights reserved.</p>
                     <div className="footer-social">
                         <a href="#" aria-label="Twitter">𝕏</a>
                         <a href="#" aria-label="Instagram">📷</a>

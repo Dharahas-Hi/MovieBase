@@ -36,7 +36,7 @@ function Register() {
             <div className="register-card">
 
                 <div className="register-logo">
-                    IMDBC
+                    MOVIEBASE
                 </div>
 
                 <h2>Create Account</h2>
