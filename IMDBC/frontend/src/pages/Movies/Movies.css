@@ -1,0 +1,99 @@
+.movies-page {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 40px 70px 80px;
+}
+
+.movies-header {
+    margin-bottom: 30px;
+    animation: fadeUp 0.5s ease;
+}
+
+.movies-page h1 {
+    color: var(--accent);
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.movies-subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.movies-sort-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sort-btn {
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+}
+
+.sort-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(245, 197, 24, 0.06);
+}
+
+.sort-btn.active {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(245, 197, 24, 0.25);
+}
+
+.movies-count {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    animation: fadeUp 0.7s ease;
+}
+
+.movies-grid .movie-card {
+    flex: none;
+    width: 100%;
+}
+
+.movies-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.movies-page .loading-container {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .movies-page { padding: 30px; }
+    .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+}
+
+@media (max-width: 600px) {
+    .movies-page { padding: 20px; }
+    .movies-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}

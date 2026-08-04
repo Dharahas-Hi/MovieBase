@@ -1,0 +1,66 @@
+.genre-card-link {
+    text-decoration: none;
+    display: block;
+}
+
+.genre-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.genre-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 60%, var(--accent-glow));
+    pointer-events: none;
+}
+
+.genre-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px var(--accent-glow);
+    border-color: var(--accent);
+}
+
+.genre-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    margin: 0 auto 16px;
+    background: var(--accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.genre-card:hover .genre-card-icon {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.genre-card h3 {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.genre-card p {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 400;
+}

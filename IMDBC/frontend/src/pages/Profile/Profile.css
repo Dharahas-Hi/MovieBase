@@ -1,0 +1,106 @@
+.profile-page {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: radial-gradient(ellipse at top, #1a1510 0%, var(--bg-primary) 60%);
+}
+
+.profile-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.5s ease;
+}
+
+.profile-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 30px rgba(245, 197, 24, 0.2);
+    transition: transform var(--transition-base);
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.profile-card h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.profile-email {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.profile-details {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    text-align: left;
+    border: 1px solid var(--border);
+}
+
+.profile-details > div {
+    margin-bottom: 14px;
+}
+
+.profile-details > div:last-child {
+    margin-bottom: 0;
+}
+
+.profile-details span {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-details p {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.profile-logout {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: inherit;
+}
+
+.profile-logout:hover {
+    background: var(--accent);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 197, 24, 0.3);
+}

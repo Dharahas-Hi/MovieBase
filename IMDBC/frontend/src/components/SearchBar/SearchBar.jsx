@@ -1,34 +1,46 @@
+import { useState, useRef } from "react";
+import { IoClose } from "react-icons/io5";
 import "./SearchBar.css";
-import { useState } from "react";
 
-function SearchBar({ movies, onSearch }) {
-
-    const [query, setQuery] = useState("");
+function SearchBar({ onSearch }) {
+    const [value, setValue] = useState("");
+    const inputRef = useRef(null);
 
     function handleChange(e) {
+        const newValue = e.target.value;
+        setValue(newValue);
+        onSearch(newValue);
+    }
 
-        const value = e.target.value;
-
-        setQuery(value);
-
-        const filtered = movies.filter(movie =>
-            movie.title.toLowerCase().includes(value.toLowerCase())
-        );
-
-        onSearch(filtered);
-
+    function handleClear() {
+        setValue("");
+        onSearch("");
+        inputRef.current?.focus();
     }
 
     return (
-
         <div className="search-bar">
-
-            <input type="text" placeholder="Search Movies..." value={query} onChange={handleChange} />
-
+            <div className="search-input-wrapper">
+                <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder="Search Movies..."
+                    value={value}
+                    onChange={handleChange}
+                />
+                {value && (
+                    <button
+                        className="search-clear-btn"
+                        onClick={handleClear}
+                        aria-label="Clear search"
+                        title="Clear"
+                    >
+                        <IoClose />
+                    </button>
+                )}
+            </div>
         </div>
-
     );
-
 }
 
 export default SearchBar;
