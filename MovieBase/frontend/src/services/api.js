@@ -181,13 +181,25 @@ function transformVideo(video) {
   };
 }
 
+// ── Content policy ──
+// Beyond the API's adult flag, a handful of titles still carry explicit
+// artwork/content and should never surface in browsing lists. Block by exact
+// TMDB id (primary) and exact title (case-insensitive fallback).
+const BLOCKED_IDS = new Set([484133]); // Nude (2017)
+const BLOCKED_TITLES = new Set(["nude"]);
+
+const isAllowed = (m) =>
+  !m.adult &&
+  !BLOCKED_IDS.has(m.movie_id ?? m.id) &&
+  !BLOCKED_TITLES.has(String(m.title || "").trim().toLowerCase());
+
 // ── List helpers ──
-// Transform + drop adult content so it never surfaces in browsing lists.
+// Transform + drop adult/blocked content so it never surfaces in browsing lists.
 const toMovieList = (results) =>
-  (results || []).map(transformMovie).filter((m) => !m.adult);
+  (results || []).map(transformMovie).filter(isAllowed);
 
 const toTVList = (results) =>
-  (results || []).map(transformTVShow).filter((m) => !m.adult);
+  (results || []).map(transformTVShow).filter(isAllowed);
 
 // Local "YYYY-MM-DD" for today (avoids UTC off-by-one-day drift).
 function todayStr() {
@@ -486,7 +498,7 @@ export const searchMulti = async (query, page = 1) => {
       .map((r) =>
         r.media_type === "tv" ? transformTVShow(r) : transformMovie(r)
       )
-      .filter((m) => !m.adult),
+      .filter(isAllowed),
     page: data.page,
     total_pages: data.total_pages,
     total: data.total_results,
@@ -500,7 +512,7 @@ export const fetchTrending = async (mediaType = "movie", timeWindow = "week") =>
   return {
     movies: (data.results || [])
       .map(mediaType === "tv" ? transformTVShow : transformMovie)
-      .filter((m) => !m.adult),
+      .filter(isAllowed),
     page: data.page,
     total_pages: data.total_pages,
     total: data.total_results,
