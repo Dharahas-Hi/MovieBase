@@ -1,0 +1,67 @@
+.tvshows-page {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 40px 70px 80px;
+}
+
+.tvshows-header {
+    margin-bottom: 30px;
+    animation: fadeUp 0.5s ease;
+}
+
+.tvshows-page h1 {
+    color: var(--accent);
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.tvshows-subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.tvshows-count {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease;
+}
+
+.tvshows-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    animation: fadeUp 0.7s ease;
+}
+
+.tvshows-grid .movie-card {
+    flex: none;
+    width: 100%;
+}
+
+.tvshows-page .loading-container {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .tvshows-page { padding: 30px; }
+    .tvshows-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+}
+
+@media (max-width: 600px) {
+    .tvshows-page { padding: 20px; }
+    .tvshows-page h1 { font-size: 28px; }
+    .tvshows-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 380px) {
+    .tvshows-page { padding: 14px; }
+    .tvshows-grid { gap: 10px; }
+    .tvshows-subtitle { font-size: 13px; }
+}

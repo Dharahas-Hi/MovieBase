@@ -27,23 +27,23 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: IMDBC/frontend/package-lock.json
+          cache-dependency-path: MovieBase/frontend/package-lock.json
 
       - name: Install dependencies
-        working-directory: IMDBC/frontend
+        working-directory: MovieBase/frontend
         run: npm install
 
       - name: Build
-        working-directory: IMDBC/frontend
+        working-directory: MovieBase/frontend
         run: npm run build
 
       - name: Add SPA fallback (404.html)
-        working-directory: IMDBC/frontend
+        working-directory: MovieBase/frontend
         run: cp dist/index.html dist/404.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: IMDBC/frontend/dist
+          path: MovieBase/frontend/dist
 
   deploy:
     environment:

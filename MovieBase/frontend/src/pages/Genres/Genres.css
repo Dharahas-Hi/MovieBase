@@ -1,0 +1,132 @@
+.genres-page {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 40px 70px 80px;
+}
+
+.genres-header {
+    margin-bottom: 32px;
+    animation: fadeUp 0.5s ease;
+}
+
+.genres-page h1 {
+    color: var(--accent);
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.genres-subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.genres-filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    padding-bottom: 4px;
+    animation: fadeUp 0.6s ease;
+}
+
+.genre-filter-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.genre-filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(245, 197, 24, 0.06);
+}
+
+.genre-filter-btn.active {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    box-shadow: 0 4px 15px rgba(245, 197, 24, 0.25);
+}
+
+.genre-filter-btn .genre-count {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 1px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+.genre-filter-btn.active .genre-count {
+    background: rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.genre-movies-area h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.genre-movies-area h2 span {
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.genre-movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    animation: fadeUp 0.7s ease;
+}
+
+.genre-movies-grid .movie-card {
+    flex: none;
+    width: 100%;
+}
+
+.genre-movies-area .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.genres-page .loading-container {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .genres-page { padding: 30px; }
+    .genre-movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+}
+
+@media (max-width: 600px) {
+    .genres-page { padding: 20px; }
+    .genres-page h1 { font-size: 28px; }
+    .genres-filter-bar { gap: 8px; }
+    .genre-filter-btn { font-size: 13px; padding: 8px 16px; }
+    .genre-movies-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+@media (max-width: 380px) {
+    .genres-page { padding: 14px; }
+    .genres-filter-bar { overflow-x: auto; flex-wrap: nowrap; padding: 4px 2px 8px; margin-bottom: 24px; }
+    .genre-filter-btn { white-space: nowrap; }
+    .genre-movies-grid { gap: 8px; }
+}
